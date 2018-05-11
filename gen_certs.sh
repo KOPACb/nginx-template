@@ -2,14 +2,14 @@
 #some initial values
 site_name='*'
 email_address='admin@example.com'
-organization=''
-organizational_unit=''
+organization='organization'
+organizational_unit='unit'
 country='MW'
 state='SS'
 city='EH'
 #initial path
 
-CERTDIR='/etc/ssl/certs/'
+CERTDIR='/etc/ssl/certs'
 CERTNAME='default_ss'
 
 DHPARAM='/etc/ssl/certs/dhparam.pem'
@@ -17,14 +17,18 @@ DHSTRENGTH=4096
 
 KEY=$CERTDIR'/'$CERTNAME'.key'
 CSR=$CERTDIR'/'$CERTNAME'.csr'
+CRT=$CERTDIR'/'$CERTNAME'.crt'
+PEM=$CERTDIR'/'$VERTNAME'.pem'
 
 #make shure there is dir to place certs
 mkdir -p $CERTDIR
 
 #gencert
 echo -e "Making ssl serts:"
-openssl req -new -nodes -x509 -newkey rsa:4096 \
-        -keyout $CERTDIR/$CERTNAME.key -out $CERTDIR/$CERTNAME.crt \
+echo "$KEY"
+echo "$CRT"
+openssl req -new -nodes -x509 -newkey rsa:4096 -nodes \
+        -keyout $KEY -out $CRT \
         -subj "/CN=$site_name/O=$organization/OU=$organizational_unit/C=$country/ST=$state/L=$city"
 
 #gen Diffie-Hellman
@@ -35,4 +39,4 @@ echo -e "Making DH:"
 openssl dhparam -dsaparam -out $DHPARAM $DHSTRENGTH
 
 #genpem
-cat $CERTDIR/$CERTNAME.crt $CERTDIR/$CERTNAME.key > $CERTDIR/$CERTNAME.pem
+cat $CRT $KEY > $PEM

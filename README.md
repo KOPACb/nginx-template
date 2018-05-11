@@ -24,3 +24,6 @@ Than get certbot and make some certs from [Let’s Encrypt](https://letsencrypt.
 
 * Caching policy:  
 There is no template for caching policy. Just set `expires 1d` at location you need.
+
+* Restricted content:  
+You can add simple_auth by adding 

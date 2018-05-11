@@ -13,6 +13,10 @@ server {
         return 301 https://$host$request_uri;
 	}
 
+    location /restricted {
+        auth_basic           "restricted content";
+        auth_basic_user_file passwd/dontuseme;
+    }
 
 # If you want serve files over http
 #    location / {

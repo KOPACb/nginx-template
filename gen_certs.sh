@@ -16,17 +16,21 @@ DHPARAM='/etc/ssl/certs/dhparam.pem'
 DHSTRENGTH=4096
 
 KEY=$CERTDIR'/'$CERTNAME'.key'
-CSR=$CERTDIR'/'$CERTNAME'.csr'
 CRT=$CERTDIR'/'$CERTNAME'.crt'
 PEM=$CERTDIR'/'$VERTNAME'.pem'
+CSR=$CERTDIR'/'$CERTNAME'.csr'
 
 #make shure there is dir to place certs
 mkdir -p $CERTDIR
 
 #gencert
 echo -e "Making ssl serts:"
-echo "$KEY"
-echo "$CRT"
+
+#rm -f $KEY
+#rm -f $CRT
+#rm -f $PEM
+#rm -f $CSR
+
 openssl req -new -nodes -x509 -newkey rsa:4096 -nodes \
         -keyout $KEY -out $CRT \
         -subj "/CN=$site_name/O=$organization/OU=$organizational_unit/C=$country/ST=$state/L=$city"

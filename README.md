@@ -27,10 +27,14 @@ There is no template for caching policy. Just set `expires 1d` at location you n
 
 * Restricted content:  
 You can add simple_auth in server or location directive by adding  
-```
+  ```
     auth_basic           "restricted content";  
     auth_basic_user_file passwd/dontuseme;  
-```  
+  ```  
+  Do not use passwd/dontuseme auth template, generate yourown username@passwords.  
+  Just like `openssl passwd` or even `openssl passwd MYSTRONGPASSWORD`.
+  Dont use second method, your password will be in ~/.bash_history.
+
 
 * Gzip:  
 There is gzip enabled by default with max comp level. if it will make too much cpu load you can adjust it to lower level. Find it at templates/gzip.

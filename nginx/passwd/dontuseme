@@ -1,0 +1,11 @@
+# Do not use this file. generate yourown, like passwd/domain.
+# You can generate password like:
+# openssl passwd password
+
+# add following to server { } or location /restricted { } directives:
+#    auth_basic           "restricted content";
+#    auth_basic_user_file passwd/dontuseme;
+
+# username:password:comment
+#this is admin:admin, dont use
+admin:qNg070E.jbtHA:password_admin

@@ -1,0 +1,10 @@
+#SHOULD BE AVAILABLE FROM 80
+#letsencrypt ( certbot )
+
+#mkdir -p /var/www/html/.well-known/acme-challenge
+#chown -R www-data:www-data /var/www
+
+    location /.well-known {
+        root /var/www/html;
+    }
+

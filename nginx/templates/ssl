@@ -1,0 +1,25 @@
+        ssl on;
+
+        ssl_stapling on;
+        ssl_stapling_verify on;
+#       change your resolver here ( /etc/nginx/templates/resolver )
+        include templates/resolver;
+        add_header Strict-Transport-Security "max-age=31536000";
+        add_header Content-Security-Policy "img-src https: data:; upgrade-insecure-requests";
+
+        include templates/ssl-intermediate;
+
+        ssl_session_timeout 24h;
+        ssl_session_cache shared:ssl_session_cache:10m;
+
+    	add_header X-Frame-Options SAMEORIGIN;
+
+# For resistance to BREACH:
+# https://github.com/nulab/nginx-length-hiding-filter-module
+#        length_hiding on;
+
+#DO NOT FORGET TO ADD:
+#        ssl_certificate /etc/letsencrypt/live/<#DOMAIN#>/fullchain.pem;
+#        ssl_certificate_key /etc/letsencrypt/live/<#DOMAIN#>/privkey.pem;
+#        ssl_trusted_certificate /etc/letsencrypt/live/<#DOMAIN#>/chain.pem;
+

@@ -26,4 +26,11 @@ Than get certbot and make some certs from [Let’s Encrypt](https://letsencrypt.
 There is no template for caching policy. Just set `expires 1d` at location you need.
 
 * Restricted content:  
-You can add simple_auth by adding 
+You can add simple_auth in server or location directive by adding  
+```
+    auth_basic           "restricted content";  
+    auth_basic_user_file passwd/dontuseme;  
+```  
+
+* Gzip:  
+There is gzip enabled by default with max comp level. if it will make too much cpu load you can adjust it to lower level. Find it at templates/gzip.

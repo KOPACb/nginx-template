@@ -6,7 +6,7 @@ to start using it clone, copy and generate certs.
 + `./gen_certs.sh`
 +  do something like that:   
 back up original config:  
-`cp -r /etc/nginx/ /etc/nginx.original/`  
+`cp -r /etc/nginx/ /srv/nginx.original/`  
 copy template:  
 `cd nginx-template && cp -r nginx/ /etc/`  
 then you need to merge you configs with /etc/nginx/sites-available/template  

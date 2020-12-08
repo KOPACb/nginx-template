@@ -38,3 +38,14 @@ You can add simple_auth in server or location directive by adding
 
 * Gzip:  
 There is gzip enabled by default with max comp level. if it will make too much cpu load you can adjust it to lower level. Find it at templates/gzip.
+
+# certbot
+For some automation purposes you can add
+```
+authenticator = webroot
+webroot-path = /var/www/html
+post-hook = service nginx reload
+text = True
+```
+to `/etc/letsencrypt/cli.ini`
+

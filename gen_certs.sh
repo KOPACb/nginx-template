@@ -38,9 +38,9 @@ openssl req -new -nodes -x509 -newkey rsa:4096 -nodes \
 #gen Diffie-Hellman
 echo -e "Making DH:"
 #uncomment this if you want get strong-primes algorythm ( it take really long time )
-#openssl dhparam -out $DHPARAM $DHSTRENGTH
+openssl dhparam -out $DHPARAM $DHSTRENGTH
 #faster Diffie-Hellman algorhytm, that uses DSA-like.
-openssl dhparam -dsaparam -out $DHPARAM $DHSTRENGTH
+#openssl dhparam -dsaparam -out $DHPARAM $DHSTRENGTH
 
 #genpem
 cat $CRT $KEY > $PEM

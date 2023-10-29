@@ -10,7 +10,7 @@ server {
 
 	location / {
         # Redirect all HTTP requests to HTTPS with a 301 Moved Permanently response.
-        return 301 https://$host$request_uri;
+        return 301 https://example.com$request_uri;
 	}
 
     location /restricted {
@@ -25,5 +25,41 @@ server {
 #            try_files $uri $uri/ =404;
 #    }
 
+
+}
+
+server {
+    listen   443 ssl http2;
+
+    server_name  example.com;
+
+#    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+#    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+#    ssl_trusted_certificate /etc/letsencrypt/live/example.com/chain.pem;
+
+    include templates/ssl;
+
+    error_log /var/log/nginx/example.com-error.log;
+    access_log /var/log/nginx/example.com-access.log;
+
+#    client_max_body_size 10m;
+
+# proxy example:
+
+#    location / {
+#       proxy_http_version 1.1;
+#       proxy_set_header Upgrade $http_upgrade;
+#       proxy_set_header Connection 'upgrade';
+#       proxy_set_header Host $host;
+#       proxy_cache_bypass $http_upgrade;
+#           proxy_set_header X-Real-IP $remote_addr;
+#       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#       proxy_pass       http://127.0.0.1:5000;
+#    }
+
+    location / {
+        root /var/www/html/;
+        try_files $uri $uri/ =404;
+    }
 
 }

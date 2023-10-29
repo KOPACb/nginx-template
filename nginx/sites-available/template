@@ -6,7 +6,7 @@ server {
     access_log /var/log/nginx/example.com-access.log;
 
     include templates/certbot;
-    
+
     location / {
     	return 301 https://example.com$request_uri;
     }
@@ -47,4 +47,3 @@ server {
     }
 
 }
-

@@ -3,6 +3,7 @@
 to start using it clone, copy and generate certs.
 
 + `git clone https://github.com/KOPACb/nginx-template.git`
++ `cd nginx-template`
 + `./gen_certs.sh`
 +  do something like that:   
 back up original config:  

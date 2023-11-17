@@ -45,7 +45,7 @@ For some automation purposes you can add
 ```
 authenticator = webroot
 webroot-path = /var/www/html
-post-hook = service nginx reload
+post-hook = nginx -s reload
 text = True
 ```
 to `/etc/letsencrypt/cli.ini`

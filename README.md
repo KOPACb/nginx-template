@@ -14,6 +14,9 @@ then you need to merge you configs with /etc/nginx/sites-available/template
 + `ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/`
 + `service nginx restart`
 
+or just use install.sh:
++ `cd nginx-template`
++ `./install.sh`
 
 # setups:
 * SSL:  
@@ -49,4 +52,3 @@ post-hook = nginx -s reload
 text = True
 ```
 to `/etc/letsencrypt/cli.ini`
-

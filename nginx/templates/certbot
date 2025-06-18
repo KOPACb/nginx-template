@@ -1,11 +1,10 @@
-#SHOULD BE AVAILABLE FROM 80
-#letsencrypt ( certbot )
+# SHOULD BE AVAILABLE FROM 80
+# letsencrypt ( certbot )
 
-#mkdir -p /var/www/html/.well-known/acme-challenge
-#chown -R www-data:www-data /var/www
+# mkdir -p /var/www/html/.well-known/acme-challenge
+# chown -R www-data:www-data /var/www
 # certbot webroot: /var/www/html/
 
     location /.well-known {
         root /var/www/html;
     }
-

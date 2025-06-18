@@ -36,9 +36,20 @@ openssl req -new -nodes -x509 -newkey rsa:4096 -nodes \
         -subj "/CN=$site_name/O=$organization/OU=$organizational_unit/C=$country/ST=$state/L=$city"
 
 #gen Diffie-Hellman
-echo -e "Making DH:"
+
+printf 'Do you want to use strong-primes DH [Y/n]? '
+read -t 30 DH_YN
+
+case ${DH_YN:0:1} in
+    n|N )
+        openssl dhparam -dsaparam -out $DHPARAM $DHSTRENGTH
+    ;;
+    * )
+        openssl dhparam -out $DHPARAM $DHSTRENGTH
+    ;;
+esac
 #uncomment this if you want get strong-primes algorythm ( it take really long time )
-openssl dhparam -out $DHPARAM $DHSTRENGTH
+# openssl dhparam -out $DHPARAM $DHSTRENGTH
 #faster Diffie-Hellman algorhytm, that uses DSA-like.
 #openssl dhparam -dsaparam -out $DHPARAM $DHSTRENGTH
 
